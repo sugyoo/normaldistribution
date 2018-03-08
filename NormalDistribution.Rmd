@@ -1,0 +1,63 @@
+---
+title: "Normal Distribution"
+author: "Sugyoo, Lee"
+date: "7 March 2018"
+output: ioslides_presentation 
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+## Normal Distribution
+Let's look at a function that generates an arbitrary number that follows a specific distribution, such as a normal distribution.
+
+| Function|  Prefix  |Parameters|
+|---|---|---|
+|Density function| d  | dnorm(x, mean=0, sd=1)  |
+|Cumulative distribution function   |p   | pnorm(q, mean=0, sd=1,lower.tail=TRUE/FALSE)|
+|Quantile function   |q   |qnorm(p, mean=0, sd=1, lower.tail=TRUE/FALSE)|
+|Random number generation  |r   |rnorm(n, mean=0, sd=1)|
+
+## Density distribution plot
+```{r}
+x <- seq(-3, 3, length=200) 
+plot(x, dnorm(x, mean=0, sd=1), type='l'
+     , main="Normal distribution, X~N(0,1)")
+
+```
+
+## Cumulative normal distribution plot  
+```{r }
+x <- seq(-3, 3, length=200) 
+plot(x, pnorm(x, mean=0, sd=1), type='l'
+     , main="Cumulative normal distribution, X~N(0,1)")
+```
+
+## Calculate a cumulative function: pnorm
+```{r }
+pnorm(q=c(1), mean=0, sd=1)
+pnorm(q=c(-1), mean=0, sd=1) 
+pnorm(q=c(-2), mean=0, sd=1) 
+```
+
+## qnorm(p, mean=0, sd=1, lower.tail=TRUE/FALSE)
+When you want to know the quantile q corresponding to a specific cumulative distribution function value p in a population that follows a normal distribution....
+```{r}
+pnorm(q=c(1), mean=0, sd=1)
+qnorm(p=0.8413447, mean=0, sd=1, lower.tail = TRUE) 
+qnorm(pnorm(1))
+```
+
+## Generation of randomly distributed numbers
+```{r}
+random_norm_100 <- rnorm(100, mean=0, sd=1)
+random_norm_100
+```
+
+## And Histogram of random 100
+
+```{r}
+hist(random_norm_100)
+```
+
